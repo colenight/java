@@ -1,0 +1,18 @@
+File f = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+"test.zip");
+System.out.println(f.getPath());
+if(!f.exists()){
+  f.createNewFile();
+}else{
+  System.out.println("压缩文件已经存在！");
+}
+FileOutputStream fos = new FileOutputStream(f);
+ZipOutputStream zos = new ZipOutputStream(fos);
+ZipEntry ze = new ZipEntry("C:" + System.getProperty("file.separator") + "text.txt");
+zos.putNextEntry(ze);
+zos.closeEntry();
+zos.close();
+fos.close();
+f = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+"test");
+if(!f.exists()){
+  f.mkdir();
+}
